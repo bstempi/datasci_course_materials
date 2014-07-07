@@ -8,6 +8,8 @@ def count_tweet(tweet_text, count_map):
     for word in words:
         word = word.lower()
         word = re.sub(r'\W+', '', word)
+        if not word:
+            continue
         try:
             word.decode('ascii')
         except UnicodeEncodeError:
