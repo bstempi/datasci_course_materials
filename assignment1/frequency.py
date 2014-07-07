@@ -32,7 +32,6 @@ def main():
         if  tweet_text:
             count_total += count_tweet(tweet_text, count_map)
 
-    print 'Count total: {0:d}'.format(count_total)
     for key in count_map.keys():
         entry = count_map[key]
         print '{0:s} {1:20.20f}'.format(key, entry/float(count_total))
