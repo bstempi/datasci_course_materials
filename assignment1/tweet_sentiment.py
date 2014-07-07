@@ -1,4 +1,5 @@
 import json
+import re
 import sys
 
 def generate_sent_map(sent_lines):
@@ -15,8 +16,13 @@ def score_tweet(tweet_text, sent_map):
     total_score = 0
     words = tweet_text.split(' ')
     for word in words:
-        word = word.strip()
-        score = sent_map.get(word, None)
+        word = word.lower()
+        word = re.sub(r'\W+', '', word)
+        try:
+            word.decode('ascii')
+        except UnicodeEncodeError:
+            continue
+        score = sent_map.get(word, 0)
         if score:
             total_score += score
     return total_score
