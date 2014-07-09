@@ -116,15 +116,12 @@ def main():
     happiest_state = ''
     happiest_state_score = 0
     for state in state_sentiments.keys():
-        print state
-        print state_sentiments[state]
         score = reduce(lambda x, y: x + y, state_sentiments[state]) / len(state_sentiments[state])
         if score > happiest_state_score:
             happiest_state = state
             happiest_state_score = score
 
     print happiest_state
-    print happiest_state_score
 
 if __name__ == '__main__':
     main()
